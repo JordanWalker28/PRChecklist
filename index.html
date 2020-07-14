@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
-
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
 <style>
 /* The container */
 .container {
@@ -73,6 +75,19 @@
 
 <body>
 
+<script>
+$(document).ready(function(){
+
+    var $checkboxes = $('#devel-generate-content-form td input[type="checkbox"]');
+
+    $checkboxes.change(function(){
+        var countCheckedCheckboxes = $checkboxes.filter(':checked').length;
+        $('#count-checked-checkboxes').text(countCheckedCheckboxes);
+    });
+
+});
+</script>
+
 <h1>Formatting</h1>
 
 <form action="/action_page.php" method="get">
@@ -114,6 +129,49 @@
   <label for="External2"> Is everything passing on Jenkins?</label><br><br>
 
   <input type="submit" value="Submit">
+
+</form>
+
+<form action="/admin/config/development/generate/content" method="post" id="devel-generate-content-form" accept-charset="UTF-8">
+<div>
+<table class="sticky-enabled">
+    <thead>
+        <tr>
+            <th class="select-all"></th>
+            <th>Content type</th>
+            <th>Comments</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="odd">
+            <td>
+                <div class="form-item form-type-checkbox form-item-node-types-forum">
+                    <input type="checkbox" id="edit-node-types-forum" name="node_types[forum]"
+                    value="forum" class="form-checkbox" />
+                </div>
+            </td>
+            <td>Forum topic</td>
+            <td><small>Open</small>
+            </td>
+        </tr>
+        <tr class="even">
+            <td>
+                <div class="form-item form-type-checkbox form-item-node-types-article">
+                    <input type="checkbox" id="edit-node-types-article" name="node_types[article]"
+                    value="article" class="form-checkbox" />
+                </div>
+            </td>
+            <td>Article</td>
+            <td><small>Open</small>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+    <div class="count-checkboxes-wrapper">
+    <span id="count-checked-checkboxes">0</span> checked
+    </div>
 
 </form>
 
