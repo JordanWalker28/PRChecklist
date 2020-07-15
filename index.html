@@ -83,6 +83,7 @@ $(document).ready(function(){
     var $checkboxesExternal = $('#devel-generate-content-form-3 input[type="checkbox"]');
     var $checkboxesCurrent = $('#devel-generate-content-form input[type="checkbox"]');
 
+
     $checkboxesFormatting.change(function(){
         var countCheckedCheckboxes = $checkboxesFormatting.filter(':checked').length;
         $('#count-checked-checkboxes-1').text(countCheckedCheckboxes);
@@ -172,8 +173,8 @@ $(document).ready(function(){
 </div>
 
   <div class="count-checkboxes-wrapper">
-    <span id="count-checked-checkboxes-Current">0</span> checked
-    <span id="count-checked-checkboxes-Total">0</span> checked
+    <span id="count-checked-checkboxes-Current">0</span> checked out of
+    <span id="count-checked-checkboxes-Total">11</span> checked
   </div><br><br>
 
   <input type="submit" value="Submit">
