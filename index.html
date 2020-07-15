@@ -78,11 +78,23 @@
 <script>
 $(document).ready(function(){
 
-    var $checkboxes = $('#devel-generate-content-form td input[type="checkbox"]');
+    var $checkboxesFormatting = $('#devel-generate-content-form-1 input[type="checkbox"]');
+    var $checkboxesCode = $('#devel-generate-content-form-2 input[type="checkbox"]');
+    var $checkboxesExternal = $('#devel-generate-content-form-3 input[type="checkbox"]');
 
-    $checkboxes.change(function(){
-        var countCheckedCheckboxes = $checkboxes.filter(':checked').length;
-        $('#count-checked-checkboxes').text(countCheckedCheckboxes);
+    $checkboxesFormatting.change(function(){
+        var countCheckedCheckboxes = $checkboxesFormatting.filter(':checked').length;
+        $('#count-checked-checkboxes-1').text(countCheckedCheckboxes);
+    });
+
+    $checkboxesCode.change(function(){
+        var countCheckedCheckboxes = $checkboxesCode.filter(':checked').length;
+        $('#count-checked-checkboxes-2').text(countCheckedCheckboxes);
+    });
+
+    $checkboxesExternal.change(function(){
+        var countCheckedCheckboxes = $checkboxesExternal.filter(':checked').length;
+        $('#count-checked-checkboxes-3').text(countCheckedCheckboxes);
     });
 
 });
@@ -92,90 +104,65 @@ $(document).ready(function(){
 
 <form action="" method="get">
 
-  <label class="container">Indentation
-    <input type="checkbox"><span class="checkmark"></span>
-  </label>
-  <label class="container">Spelling
-    <input type="checkbox"><span class="checkmark"></span>
-  </label>
-  <label class="container">Extra Lines
-    <input type="checkbox"><span class="checkmark"></span>
-  </label>
-  <label class="container">Is there more than one type(class/struct/interface/enum) per file (excluding nested classes).
-    <input type="checkbox"><span class="checkmark"></span>
-  </label>
-  <label class="container">Summary matches implementation
-    <input type="checkbox"><span class="checkmark"></span><br><br>
-  </label>
+  <div id="devel-generate-content-form-1">
+    <label class="container">Indentation
+      <input type="checkbox"><span class="checkmark"></span>
+    </label>
+    <label class="container">Spelling
+      <input type="checkbox"><span class="checkmark"></span>
+    </label>
+    <label class="container">Extra Lines
+      <input type="checkbox"><span class="checkmark"></span>
+    </label>
+    <label class="container">Is there more than one type(class/struct/interface/enum) per file (excluding nested classes).
+      <input type="checkbox"><span class="checkmark"></span>
+    </label>
+    <label class="container">Summary matches implementation
+      <input type="checkbox"><span class="checkmark"></span><br><br>
+    </label>
+  </div>
+
+  <div class="count-checkboxes-wrapper">
+    <span id="count-checked-checkboxes-1">0</span> checked
+  </div>
 
 <h1>Code</h1>
 
-  <label class="container">Are IF statements simplified?
-    <input type="checkbox"><span class="checkmark"></span>
-  </label>
-  <label class="container">All statement blocks are in brackets
-    <input type="checkbox"><span class="checkmark"></span>
-  </label>
-  <label class="container">Variables are assigned one at a time (i.e x = 6, y = 6 not x = y = z = 6)
-    <input type="checkbox"><span class="checkmark"></span>
-  </label>
-  <label class="container">Are properties auto-generated?
-    <input type="checkbox"><span class="checkmark"></span><br><br>
-  </label>
+  <div id="devel-generate-content-form-2">
+    <label class="container">Are IF statements simplified?
+      <input type="checkbox"><span class="checkmark"></span>
+    </label>
+    <label class="container">All statement blocks are in brackets
+      <input type="checkbox"><span class="checkmark"></span>
+    </label>
+    <label class="container">Variables are assigned one at a time (i.e x = 6, y = 6 not x = y = z = 6)
+      <input type="checkbox"><span class="checkmark"></span>
+    </label>
+    <label class="container">Are properties auto-generated?
+      <input type="checkbox"><span class="checkmark"></span><br><br>
+    </label>
+  </div>
+
+  <div class="count-checkboxes-wrapper">
+    <span id="count-checked-checkboxes-2">0</span> checked
+  </div>
 
 <h1>External</h1>
 
-  <label class="container">Checked files against SonarCloud?
-    <input type="checkbox"><span class="checkmark"></span>
-  </label>
-  <label class="container">Is everything passing on Jenkins?
-    <input type="checkbox"><span class="checkmark"></span><br><br>
-  </label>
+  <div id="devel-generate-content-form-3">
+    <label class="container">Checked files against SonarCloud?
+      <input type="checkbox"><span class="checkmark"></span>
+    </label>
+    <label class="container">Is everything passing on Jenkins?
+      <input type="checkbox"><span class="checkmark"></span><br><br>
+    </label>
+  </div>
+
+  <div class="count-checkboxes-wrapper">
+    <span id="count-checked-checkboxes-3">0</span> checked
+  </div><br><br>
 
   <input type="submit" value="Submit">
-
-</form>
-
-<form action="/admin/config/development/generate/content" method="post" id="devel-generate-content-form" accept-charset="UTF-8">
-<div>
-<table class="sticky-enabled">
-    <thead>
-        <tr>
-            <th class="select-all"></th>
-            <th>Content type</th>
-            <th>Comments</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr class="odd">
-            <td>
-                <div class="form-item form-type-checkbox form-item-node-types-forum">
-                    <input type="checkbox" id="edit-node-types-forum" name="node_types[forum]"
-                    value="forum" class="form-checkbox" />
-                </div>
-            </td>
-            <td>Forum topic</td>
-            <td><small>Open</small>
-            </td>
-        </tr>
-        <tr class="even">
-            <td>
-                <div class="form-item form-type-checkbox form-item-node-types-article">
-                    <input type="checkbox" id="edit-node-types-article" name="node_types[article]"
-                    value="article" class="form-checkbox" />
-                </div>
-            </td>
-            <td>Article</td>
-            <td><small>Open</small>
-            </td>
-        </tr>
-    </tbody>
-</table>
-</div>
-
-    <div class="count-checkboxes-wrapper">
-    <span id="count-checked-checkboxes">0</span> checked
-    </div>
 
 </form>
 
