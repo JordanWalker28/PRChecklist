@@ -81,6 +81,7 @@ $(document).ready(function(){
     var $checkboxesFormatting = $('#devel-generate-content-form-1 input[type="checkbox"]');
     var $checkboxesCode = $('#devel-generate-content-form-2 input[type="checkbox"]');
     var $checkboxesExternal = $('#devel-generate-content-form-3 input[type="checkbox"]');
+    var $checkboxesCurrent = $('#devel-generate-content-form input[type="checkbox"]');
 
     $checkboxesFormatting.change(function(){
         var countCheckedCheckboxes = $checkboxesFormatting.filter(':checked').length;
@@ -97,12 +98,19 @@ $(document).ready(function(){
         $('#count-checked-checkboxes-3').text(countCheckedCheckboxes);
     });
 
+    $checkboxesCurrent.change(function(){
+        var countCheckedCheckboxes = $checkboxesCurrent.filter(':checked').length;
+        $('#count-checked-checkboxes-Current').text(countCheckedCheckboxes);
+    });
+
 });
 </script>
 
 <h1>Formatting</h1>
 
 <form action="" method="get">
+
+<div id ="devel-generate-content-form">
 
   <div id="devel-generate-content-form-1">
     <label class="container">Indentation
@@ -160,6 +168,12 @@ $(document).ready(function(){
 
   <div class="count-checkboxes-wrapper">
     <span id="count-checked-checkboxes-3">0</span> checked
+  </div><br><br>
+</div>
+
+  <div class="count-checkboxes-wrapper">
+    <span id="count-checked-checkboxes-Current">0</span> checked
+    <span id="count-checked-checkboxes-Total">0</span> checked
   </div><br><br>
 
   <input type="submit" value="Submit">
